@@ -4,7 +4,7 @@ from tkinter import filedialog
 from PIL import Image
 
 NAME = "ReCap"
-VERSION = "1.1.0"
+VERSION = "1.1.1"
 
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("themes/lavender.json")  # from CTkThemesPack
@@ -67,6 +67,13 @@ class ReCapEditor:
             self.nav_frame, text="Next", command=self.next_image
         )
         self.next_button.pack(side="left", padx=5)
+
+        self.root.protocol("WM_DELETE_WINDOW", self.on_close)
+
+    def on_close(self):
+        if self.image_files:  # ensures a dataset is loaded
+            self.save_caption()
+        self.root.destroy()
 
     def load_dataset(self):
         self.dataset_path = filedialog.askdirectory(title="Select Dataset Folder")
