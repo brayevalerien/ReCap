@@ -45,7 +45,7 @@ class ReCapEditor:
 
         # Text area for caption editing
         self.caption_text = ctk.CTkTextbox(
-            self.main_frame, wrap="word", height=150, font=("Arial", 12)
+            self.main_frame, wrap="word", height=150, font=("Arial", 12), undo=True
         )
         self.caption_text.pack(fill="both", expand=True, padx=10, pady=10)
 
